@@ -49,9 +49,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Page<Board> getBoardList(Board board) {
+	public Page<Board> getBoardList(Pageable pageable /*Board board*/) {
 		// Pageable 에서 PageRequest로 수정함
-		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
+		int page = (pageable.getPageNumber() == 0 )?0:(pageable.getPageNumber()-1); 
+		// page 는 0부터 시작 
+		// 게시판에서는 주로 1부터 시작 -> 사용자가 보려는 페이지에서 -1 처리해줌 
+		/*Pageable*/ pageable = PageRequest.of(page/*0*/, 10, Sort.Direction.DESC, "seq");
 		return boardRepo.getBoardList(pageable);
 	}
 

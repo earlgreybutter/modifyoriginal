@@ -33,6 +33,7 @@ public class BoardRepositoryTest {
         member1.setId("member");
         member1.setPassword(encoder.encode("1234"));
         member1.setName("둘리");
+        member1.setEmail("email");
         member1.setRole(Role.ROLE_MEMBER);
         member1.setEnabled(true);
         memberRepo.save(member1);
@@ -41,6 +42,7 @@ public class BoardRepositoryTest {
         member2.setId("admin");
         member2.setPassword(encoder.encode("1234"));
         member2.setName("도우너");
+        member2.setEmail("email");
         member2.setRole(Role.ROLE_ADMIN);
         member2.setEnabled(true);
         memberRepo.save(member2);
